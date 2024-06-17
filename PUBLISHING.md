@@ -1,0 +1,3 @@
+- Locally update version in `pyproject.toml` and run `python -m build`
+- Push changes
+- Create new release and tag with same version (for version `1.0.0` use `v1.0.0` etc.)
