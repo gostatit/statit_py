@@ -2,6 +2,7 @@ import requests
 
 ENDPOINT = 'https://api.gostatit.com'
 
+
 class coreAPI:
     """A python API to interact with the api.gostatit.com core web API"""
         
@@ -113,6 +114,18 @@ class coreAPI:
                 yield self.batchDeleteSerieJSON(batch)
                 batch = []
         if batch != [] : yield self.batchDeleteSerieJSON(batch)
+
+class functionsAPI:
+    """A python API to interact with the api.gostatit.com functions web API"""
+
+    def __init__(self, username: str, apikey: str):
+          self.username = username
+          self.apikey = apikey
+
+    def post(self, json):
+        r = requests.post(ENDPOINT+'/functions',auth=(self.username, self.apikey), json=json)
+        if r.status_code != 200 : raise ValueError(r.text)
+        return r.json()
     
 
 
