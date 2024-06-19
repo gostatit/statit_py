@@ -1,16 +1,16 @@
 import requests
 
-ENDPOINT = 'https://api.gostatit.com/core'
+ENDPOINT = 'https://api.gostatit.com'
 
-class API:
-    """A python API to interact with the api.gostatit.com web API"""
+class coreAPI:
+    """A python API to interact with the api.gostatit.com core web API"""
         
     def __init__(self, username: str, apikey: str):
-        self.__username = username
-        self.__apikey = apikey
+        self.username = username
+        self.apikey = apikey
 
-    def __post(self, json):
-        r = requests.post(ENDPOINT,auth=(self.__username, self.__apikey), json=json)
+    def post(self, json):
+        r = requests.post(ENDPOINT+'/core',auth=(self.username, self.apikey), json=json)
         if r.status_code != 200 : raise ValueError(r.text)
         return r.json()
 
@@ -20,7 +20,7 @@ class API:
                 "id": id,
             },
         }
-        return self.__post(json)
+        return self.post(json)
 
     def listSeries(self, parentid: str) -> list[dict[str, any]]:
         json = {
@@ -28,7 +28,7 @@ class API:
                 "id": parentid,
             },
         }
-        return self.__post(json)
+        return self.post(json)
 
     def deleteSerie(self, id: str):
         json = {
@@ -36,20 +36,20 @@ class API:
                 "id": id,
             },
         }
-        return self.__post(json)
+        return self.post(json)
 
 
     def getSerieJSON(self, input: dict[str, any]) -> dict[str, any]:
         json = {
             'action': 'getSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def batchGetSerieJSON(self, input: list[dict[str, any]]):
         json = {
             'action': 'batchGetSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def getAllSeriesJSON(self, input: list[dict[str, any]]):
         batch = []
@@ -64,19 +64,19 @@ class API:
         json = {
             'action': 'listSeries', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
         
     def putSerieJSON(self, input: dict[str, any]):
         json = {
             'action': 'putSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def batchPutSerieJSON(self, input: list[dict[str, any]]):
         json = {
             'action': 'batchPutSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def putAllSeriesJSON(self, input: list[dict[str, any]]):
         batch = []
@@ -91,19 +91,19 @@ class API:
         json = {
             'action': 'updateSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def deleteSerieJSON(self, input: dict[str, any]):
         json = {
             'action': 'deleteSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def batchDeleteSerieJSON(self, input: list[dict[str, any]]):
         json = {
             'action': 'batchDeleteSerie', 'input': input,
         }
-        return self.__post(json)
+        return self.post(json)
 
     def deleteAllSeriesJSON(self, input: list[dict[str, any]]):
         batch = []
