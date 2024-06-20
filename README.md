@@ -25,7 +25,7 @@ statitAPI = statit_py.coreAPI('YOUR_USERNAME', 'YOUR_API_KEY')
 data = api.getSerie('SERIE-ID')
 ```
 
-Alongside with the remaining `PUT`, `UPDATE` and `BATCHPUT` actions, they are also available in standard JSON request format:
+Alongside with the remaining `PUT`, `UPDATE` and all their respective `batch`  actions, they are also available in standard JSON request format:
 
 ```py
 api.putSerieJSON({
