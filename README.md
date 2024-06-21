@@ -1,5 +1,5 @@
 # statit_py
-This package is a set of utilities for [Statit](https://gostatit.com), including API access and some data manipulation utilities.
+A package to access the [Statit](https://gostatit.com) API
 
 ## Installation
 

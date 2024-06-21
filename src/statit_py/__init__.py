@@ -3,137 +3,100 @@ from urllib.parse import urljoin
 
 ENDPOINT = 'https://api.gostatit.com'
 
-
 class coreAPI:
   '''A python API to interact with the api.gostatit.com core web API'''
-    
+  
   def __init__(self, username: str, apikey: str):
     self.username = username
     self.apikey = apikey
 
-  def post(self, json):
+  def post(self, action: str, inputDict: dict):
     url = urljoin(ENDPOINT, 'core')
-    r = requests.post(url,auth=(self.username, self.apikey), json=json)
-    if r.status_code != 200 : raise ValueError(r.text)
+    json = {'action': action, 'input': inputDict}
+    r = requests.post(url, auth=(self.username, self.apikey), json=json)
+    if r.status_code != 200:
+      raise ValueError(r.text)
     return r.json()
 
-  def getSerie(self, id: str) -> dict[str, any]:
-    json = {
-      'action': 'getSerie', 'input': {
-        'id': id,
-      },
-    }
-    return self.post(json)
 
-  def listSeries(self, parentid: str) -> list[dict[str, any]]:
-    json = {
-      'action': 'listSeries', 'input': {
-        'id': parentid,
-      },
-    }
-    return self.post(json)
+  def getSerie(self, ID: str) -> dict:
+    return self.post('getSerie', {'id': ID})
 
-  def deleteSerie(self, id: str):
-    json = {
-      'action': 'deleteSerie', 'input': {
-        'id': id,
-      },
-    }
-    return self.post(json)
+  def listSeries(self, parentID: str) -> list[dict]:
+    return self.post('listSeries', {'id': parentID})
+
+  def deleteSerie(self, ID: str):
+    return self.post('deleteSerie', {'id': ID})
 
 
-  def getSerieJSON(self, input: dict[str, any]) -> dict[str, any]:
-    json = {
-      'action': 'getSerie', 'input': input,
-    }
-    return self.post(json)
+  def getSerieJSON(self, inputDict: dict) -> dict:
+    return self.post('getSerie', inputDict)
 
-  def batchGetSerieJSON(self, input: list[dict[str, any]]):
-    json = {
-      'action': 'batchGetSerie', 'input': input,
-    }
-    return self.post(json)
+  def batchGetSerieJSON(self, inputDict: list[dict]):
+    return self.post('batchGetSerie', inputDict)
 
-  def getAllSeriesJSON(self, input: list[dict[str, any]]):
+  def getAllSeriesJSON(self, inputDict: list[dict]):
     batch = []
-    for serie in input:
+    for serie in inputDict:
       batch.append(serie)
       if len(batch) == 25:
         yield self.batchGetSerieJSON(batch)
         batch = []
-    if batch != [] : yield self.batchGetSerieJSON(batch)
+    if batch:
+      yield self.batchGetSerieJSON(batch)
 
-  def listSeriesJSON(self, input: dict[str, any]) -> list[dict[str, any]]:
-    json = {
-      'action': 'listSeries', 'input': input,
-    }
-    return self.post(json)
-    
-  def putSerieJSON(self, input: dict[str, any]):
-    json = {
-      'action': 'putSerie', 'input': input,
-    }
-    return self.post(json)
+  def listSeriesJSON(self, inputDict: dict) -> list[dict]:
+    return self.post('listSeries', inputDict)
 
-  def batchPutSerieJSON(self, input: list[dict[str, any]]):
-    json = {
-      'action': 'batchPutSerie', 'input': input,
-    }
-    return self.post(json)
+  def putSerieJSON(self, inputDict: dict):
+    return self.post('putSerie', inputDict)
 
-  def putAllSeriesJSON(self, input: list[dict[str, any]]):
+  def batchPutSerieJSON(self, inputDict: list[dict]):
+    return self.post('batchPutSerie', inputDict)
+
+  def putAllSeriesJSON(self, inputDict: list[dict]):
     batch = []
-    for serie in input:
+    for serie in inputDict:
       batch.append(serie)
       if len(batch) == 25:
         yield self.batchPutSerieJSON(batch)
         batch = []
-    if batch != [] : yield self.batchPutSerieJSON(batch)
-    
-  def updateSerieJSON(self, input: dict[str, any]):
-    json = {
-      'action': 'updateSerie', 'input': input,
-    }
-    return self.post(json)
+    if batch:
+      yield self.batchPutSerieJSON(batch)
 
-  def deleteSerieJSON(self, input: dict[str, any]):
-    json = {
-      'action': 'deleteSerie', 'input': input,
-    }
-    return self.post(json)
+  def updateSerieJSON(self, inputDict: dict):
+    return self.post('updateSerie', inputDict)
 
-  def batchDeleteSerieJSON(self, input: list[dict[str, any]]):
-    json = {
-      'action': 'batchDeleteSerie', 'input': input,
-    }
-    return self.post(json)
+  def deleteSerieJSON(self, inputDict: dict):
+    return self.post('deleteSerie', inputDict)
 
-  def deleteAllSeriesJSON(self, input: list[dict[str, any]]):
+  def batchDeleteSerieJSON(self, inputDict: list[dict]):
+    return self.post('batchDeleteSerie', inputDict)
+
+  def deleteAllSeriesJSON(self, inputDict: list[dict]):
     batch = []
-    for serie in input:
+    for serie in inputDict:
       batch.append(serie)
       if len(batch) == 25:
         yield self.batchDeleteSerieJSON(batch)
         batch = []
-    if batch != [] : yield self.batchDeleteSerieJSON(batch)
+    if batch:
+      yield self.batchDeleteSerieJSON(batch)
 
 class functionsAPI:
   '''A python API to interact with the api.gostatit.com functions web API'''
 
   def __init__(self, username: str, apikey: str):
-      self.username = username
-      self.apikey = apikey
+    self.username = username
+    self.apikey = apikey
 
-  def post(self, json):
+  def post(self, action: str, inputDict: dict):
     url = urljoin(ENDPOINT, 'functions')
-    r = requests.post(url,auth=(self.username, self.apikey), json=json)
-    if r.status_code != 200 : raise ValueError(r.text)
+    json = {'action': action, 'input': inputDict}
+    r = requests.post(url, auth=(self.username, self.apikey), json=json)
+    if r.status_code != 200:
+      raise ValueError(r.text)
     return r.json()
 
-  def getObs(self, id: str):
-    json = {
-      'action': 'getObs', 'input': {
-        'id': id,
-      },
-    }
-    return self.post(json)
+  def getObs(self, ID: str):
+    return self.post('getObs', {'id': ID})

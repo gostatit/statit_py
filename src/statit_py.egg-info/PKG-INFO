@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: statit_py
-Version: 1.0.0a2
+Version: 1.0.0a3
 Summary: Utilities for gostatit.com
 Author-email: keyboardcat1010@gmail.com
 Project-URL: Homepage, https://github.com/keyboardcat1/statit_py
@@ -14,7 +14,7 @@ License-File: LICENSE
 Requires-Dist: requests
 
 # statit_py
-This package is a set of utilities for [Statit](https://gostatit.com), including API access and some data manipulation utilities.
+A package to access the [Statit](https://gostatit.com) API
 
 ## Installation
 
@@ -40,7 +40,7 @@ statitAPI = statit_py.coreAPI('YOUR_USERNAME', 'YOUR_API_KEY')
 data = api.getSerie('SERIE-ID')
 ```
 
-Alongside with the remaining `PUT`, `UPDATE` and `BATCHPUT` actions, they are also available in standard JSON request format:
+Alongside with the remaining `PUT`, `UPDATE` and all their respective `batch`  actions, they are also available in standard JSON request format:
 
 ```py
 api.putSerieJSON({
