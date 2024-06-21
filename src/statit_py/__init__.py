@@ -83,6 +83,8 @@ class coreAPI:
     if batch:
       yield self.batchDeleteSerieJSON(batch)
 
+
+
 class functionsAPI:
   '''A python API to interact with the api.gostatit.com functions web API'''
 
@@ -98,5 +100,135 @@ class functionsAPI:
       raise ValueError(r.text)
     return r.json()
 
-  def getObs(self, ID: str):
-    return self.post('getObs', {'id': ID})
+
+  def getObs(self, ID: str, end=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    return self.post('getObs', inputDict)
+
+  def getObsSum(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getObsSum', inputDict)
+
+  def getObsAverage(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getObsAverage', inputDict)
+
+  def getObsChange(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getObsChange', inputDict)
+
+  def getObsChangePercent(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getObsChangePercent', inputDict)
+
+  def getObsDate(self, ID: str, end=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    return self.post('getObsDate', inputDict)
+
+  def getPoint(self, ID: str, end=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    return self.post('getPoint', inputDict)
+
+  def getPointSum(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getPointSum', inputDict)
+
+  def getPointAverage(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getPointAverage', inputDict)
+
+  def getPointChange(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getPointChange', inputDict)
+
+  def getPointChangePercent(self, ID: str, end=None, periods=None):
+    inputDict = {'id': ID}
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getPointChangePercent', inputDict)
+
+  def getSerie(self, ID: str, start=None, end=None):
+    inputDict = {'id': ID}
+    if start is not None:
+      inputDict['start'] = start
+    if end is not None:
+      inputDict['end'] = end
+    return self.post('getSerie', inputDict)
+
+  def getSerieSum(self, ID: str, start=None, end=None, periods=None):
+    inputDict = {'id': ID}
+    if start is not None:
+      inputDict['start'] = start
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getSerieSum', inputDict)
+
+  def getSerieAverage(self, ID: str, start=None, end=None, periods=None):
+    inputDict = {'id': ID}
+    if start is not None:
+      inputDict['start'] = start
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getSerieAverage', inputDict)
+
+  def getSerieChange(self, ID: str, start=None, end=None, periods=None):
+    inputDict = {'id': ID}
+    if start is not None:
+      inputDict['start'] = start
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getSerieChange', inputDict)
+
+  def getSerieChangePercent(self, ID: str, start=None, end=None, periods=None):
+    inputDict = {'id': ID}
+    if start is not None:
+      inputDict['start'] = start
+    if end is not None:
+      inputDict['end'] = end
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getSerieChangePercent', inputDict)
+
+  
