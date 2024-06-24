@@ -22,8 +22,8 @@ class coreAPI:
   def getSerie(self, ID: str) -> dict:
     return self.post('getSerie', {'id': ID})
 
-  def listSeries(self, parentID: str) -> list[dict]:
-    return self.post('listSeries', {'id': parentID})
+  def listSeries(self, ID: str) -> list[dict]:
+    return self.post('listSeries', {'id': ID})
 
   def deleteSerie(self, ID: str):
     return self.post('deleteSerie', {'id': ID})

@@ -16,20 +16,20 @@ To use the Statit REST API methods, first authenthicate yourself with your usern
 ```py
 import statit_py
 
-statitAPI = statit_py.coreAPI('YOUR_USERNAME', 'YOUR_API_KEY')
+statitAPI = statit_py.coreAPI('<username>', '<api_key>')
 ```
 
 `GET`, `LIST` and `DELETE` actions for collections and series are available in reference-by-ID format:
 
 ```py
-data = api.getSerie('SERIE-ID')
+data = api.getSerie('<serie_id>')
 ```
 
-Alongside with the remaining `PUT`, `UPDATE` and all their respective `batch`  actions, they are also available in standard JSON request format:
+Alongside with the remaining `PUT` and all their respective `batch`  actions, they are also available in standard JSON request format:
 
 ```py
 api.putSerieJSON({
-    'id': 'SERIE_ID',
+    'id': '<serie_id>',
     ...
 })
 ```
