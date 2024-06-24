@@ -32,18 +32,8 @@ class coreAPI:
   def getSerieJSON(self, inputDict: dict) -> dict:
     return self.post('getSerie', inputDict)
 
-  def batchGetSerieJSON(self, inputDict: list[dict]):
+  def batchGetSerieJSON(self, inputDict: dict):
     return self.post('batchGetSerie', inputDict)
-
-  def getAllSeriesJSON(self, inputDict: list[dict]):
-    batch = []
-    for serie in inputDict:
-      batch.append(serie)
-      if len(batch) == 25:
-        yield self.batchGetSerieJSON(batch)
-        batch = []
-    if batch:
-      yield self.batchGetSerieJSON(batch)
 
   def listSeriesJSON(self, inputDict: dict) -> list[dict]:
     return self.post('listSeries', inputDict)
@@ -54,16 +44,6 @@ class coreAPI:
   def batchPutSerieJSON(self, inputDict: list[dict]):
     return self.post('batchPutSerie', inputDict)
 
-  def putAllSeriesJSON(self, inputDict: list[dict]):
-    batch = []
-    for serie in inputDict:
-      batch.append(serie)
-      if len(batch) == 25:
-        yield self.batchPutSerieJSON(batch)
-        batch = []
-    if batch:
-      yield self.batchPutSerieJSON(batch)
-
   def updateSerieJSON(self, inputDict: dict):
     return self.post('updateSerie', inputDict)
 
@@ -72,16 +52,6 @@ class coreAPI:
 
   def batchDeleteSerieJSON(self, inputDict: list[dict]):
     return self.post('batchDeleteSerie', inputDict)
-
-  def deleteAllSeriesJSON(self, inputDict: list[dict]):
-    batch = []
-    for serie in inputDict:
-      batch.append(serie)
-      if len(batch) == 25:
-        yield self.batchDeleteSerieJSON(batch)
-        batch = []
-    if batch:
-      yield self.batchDeleteSerieJSON(batch)
 
 
 
