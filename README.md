@@ -22,13 +22,13 @@ statitAPI = statit_py.coreAPI('<username>', '<api_key>')
 `GET`, `LIST` and `DELETE` actions for collections and series are available in reference-by-ID format:
 
 ```py
-data = api.getSerie('<serie_id>')
+data = statitAPI.getSerie('<serie_id>')
 ```
 
 Alongside with the remaining `PUT` and all their respective `batch`  actions, they are also available in standard JSON request format:
 
 ```py
-api.putSerieJSON({
+statitAPI.putSerieJSON({
     'id': '<serie_id>',
     ...
 })
