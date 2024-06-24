@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: statit_py
-Version: 1.0.0b0
+Version: 1.0.0b1
 Summary: Utilities for gostatit.com
 Author-email: keyboardcat1010@gmail.com
 Project-URL: Homepage, https://github.com/keyboardcat1/statit_py
@@ -37,13 +37,13 @@ statitAPI = statit_py.coreAPI('<username>', '<api_key>')
 `GET`, `LIST` and `DELETE` actions for collections and series are available in reference-by-ID format:
 
 ```py
-data = api.getSerie('<serie_id>')
+data = statitAPI.getSerie('<serie_id>')
 ```
 
 Alongside with the remaining `PUT` and all their respective `batch`  actions, they are also available in standard JSON request format:
 
 ```py
-api.putSerieJSON({
+statitAPI.putSerieJSON({
     'id': '<serie_id>',
     ...
 })
