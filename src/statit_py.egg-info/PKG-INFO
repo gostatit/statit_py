@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: statit_py
-Version: 1.0.0b1
+Version: 1.0.0b2
 Summary: Utilities for gostatit.com
 Author-email: keyboardcat1010@gmail.com
 Project-URL: Homepage, https://github.com/keyboardcat1/statit_py
@@ -49,7 +49,7 @@ statitAPI.putSerieJSON({
 })
 ```
 
-For the full list of methods and their detailed arguments, see the [Python Documentation]().
+For the full list of methods and their detailed arguments, see the [Python Documentation](https://help.gostatit.com/dg/py/).
 
 
 

@@ -34,7 +34,7 @@ statitAPI.putSerieJSON({
 })
 ```
 
-For the full list of methods and their detailed arguments, see the [Python Documentation]().
+For the full list of methods and their detailed arguments, see the [Python Documentation](https://help.gostatit.com/dg/py/).
 
 
 

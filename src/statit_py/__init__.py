@@ -71,132 +71,132 @@ class functionsAPI:
     return r.json()
 
 
-  def getObs(self, ID: str, end=None):
+  def getValue(self, ID: str, endDate=None):
     inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
+    if endDate is not None:
+      inputDict['endDate'] = endDate
+    return self.post('getValue', inputDict)
+
+  def getValueSum(self, ID: str, endDate=None, periods=None):
+    inputDict = {'id': ID}
+    if endDate is not None:
+      inputDict['endDate'] = endDate
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getValueSum', inputDict)
+
+  def getValueAverage(self, ID: str, endDate=None, periods=None):
+    inputDict = {'id': ID}
+    if endDate is not None:
+      inputDict['endDate'] = endDate
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getValueAverage', inputDict)
+
+  def getValueChange(self, ID: str, endDate=None, periods=None):
+    inputDict = {'id': ID}
+    if endDate is not None:
+      inputDict['endDate'] = endDate
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getValueChange', inputDict)
+
+  def getValueChangePercent(self, ID: str, endDate=None, periods=None):
+    inputDict = {'id': ID}
+    if endDate is not None:
+      inputDict['endDate'] = endDate
+    if periods is not None:
+      inputDict['periods'] = periods
+    return self.post('getValueChangePercent', inputDict)
+
+  def getValueDate(self, ID: str, endDate=None):
+    inputDict = {'id': ID}
+    if endDate is not None:
+      inputDict['endDate'] = endDate
+    return self.post('getValueDate', inputDict)
+
+  def getObs(self, ID: str, endDate=None):
+    inputDict = {'id': ID}
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     return self.post('getObs', inputDict)
 
-  def getObsSum(self, ID: str, end=None, periods=None):
+  def getObsSum(self, ID: str, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getObsSum', inputDict)
 
-  def getObsAverage(self, ID: str, end=None, periods=None):
+  def getObsAverage(self, ID: str, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getObsAverage', inputDict)
 
-  def getObsChange(self, ID: str, end=None, periods=None):
+  def getObsChange(self, ID: str, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getObsChange', inputDict)
 
-  def getObsChangePercent(self, ID: str, end=None, periods=None):
+  def getObsChangePercent(self, ID: str, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getObsChangePercent', inputDict)
 
-  def getObsDate(self, ID: str, end=None):
+  def getSerie(self, ID: str, startDate=None, endDate=None):
     inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
-    return self.post('getObsDate', inputDict)
-
-  def getPoint(self, ID: str, end=None):
-    inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
-    return self.post('getPoint', inputDict)
-
-  def getPointSum(self, ID: str, end=None, periods=None):
-    inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
-    if periods is not None:
-      inputDict['periods'] = periods
-    return self.post('getPointSum', inputDict)
-
-  def getPointAverage(self, ID: str, end=None, periods=None):
-    inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
-    if periods is not None:
-      inputDict['periods'] = periods
-    return self.post('getPointAverage', inputDict)
-
-  def getPointChange(self, ID: str, end=None, periods=None):
-    inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
-    if periods is not None:
-      inputDict['periods'] = periods
-    return self.post('getPointChange', inputDict)
-
-  def getPointChangePercent(self, ID: str, end=None, periods=None):
-    inputDict = {'id': ID}
-    if end is not None:
-      inputDict['end'] = end
-    if periods is not None:
-      inputDict['periods'] = periods
-    return self.post('getPointChangePercent', inputDict)
-
-  def getSerie(self, ID: str, start=None, end=None):
-    inputDict = {'id': ID}
-    if start is not None:
-      inputDict['start'] = start
-    if end is not None:
-      inputDict['end'] = end
+    if startDate is not None:
+      inputDict['startDate'] = startDate
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     return self.post('getSerie', inputDict)
 
-  def getSerieSum(self, ID: str, start=None, end=None, periods=None):
+  def getSerieSum(self, ID: str, startDate=None, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if start is not None:
-      inputDict['start'] = start
-    if end is not None:
-      inputDict['end'] = end
+    if startDate is not None:
+      inputDict['startDate'] = startDate
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getSerieSum', inputDict)
 
-  def getSerieAverage(self, ID: str, start=None, end=None, periods=None):
+  def getSerieAverage(self, ID: str, startDate=None, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if start is not None:
-      inputDict['start'] = start
-    if end is not None:
-      inputDict['end'] = end
+    if startDate is not None:
+      inputDict['startDate'] = startDate
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getSerieAverage', inputDict)
 
-  def getSerieChange(self, ID: str, start=None, end=None, periods=None):
+  def getSerieChange(self, ID: str, startDate=None, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if start is not None:
-      inputDict['start'] = start
-    if end is not None:
-      inputDict['end'] = end
+    if startDate is not None:
+      inputDict['startDate'] = startDate
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getSerieChange', inputDict)
 
-  def getSerieChangePercent(self, ID: str, start=None, end=None, periods=None):
+  def getSerieChangePercent(self, ID: str, startDate=None, endDate=None, periods=None):
     inputDict = {'id': ID}
-    if start is not None:
-      inputDict['start'] = start
-    if end is not None:
-      inputDict['end'] = end
+    if startDate is not None:
+      inputDict['startDate'] = startDate
+    if endDate is not None:
+      inputDict['endDate'] = endDate
     if periods is not None:
       inputDict['periods'] = periods
     return self.post('getSerieChangePercent', inputDict)
